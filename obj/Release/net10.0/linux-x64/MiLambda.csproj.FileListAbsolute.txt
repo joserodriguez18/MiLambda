@@ -1,0 +1,17 @@
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\MiLambda.deps.json
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\MiLambda.runtimeconfig.json
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\MiLambda.dll
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\MiLambda.pdb
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\Amazon.Lambda.Core.dll
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\linux-x64\Amazon.Lambda.Serialization.SystemTextJson.dll
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.csproj.AssemblyReference.cache
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.GeneratedMSBuildEditorConfig.editorconfig
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.AssemblyInfoInputs.cache
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.AssemblyInfo.cs
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.csproj.CoreCompileInputs.cache
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.csproj.Up2Date
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.dll
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\refint\MiLambda.dll
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.pdb
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\MiLambda.genruntimeconfig.cache
+D:\JOSE\RIWI\Csharp\MiLambda\obj\Release\net10.0\linux-x64\ref\MiLambda.dll

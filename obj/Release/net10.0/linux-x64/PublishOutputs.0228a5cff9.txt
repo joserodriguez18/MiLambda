@@ -1,0 +1,6 @@
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\MiLambda.deps.json
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\MiLambda.runtimeconfig.json
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\MiLambda.pdb
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\Amazon.Lambda.Core.dll
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+D:\JOSE\RIWI\Csharp\MiLambda\bin\Release\net10.0\publish\MiLambda.dll
