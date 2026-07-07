@@ -1,0 +1,153 @@
+# Nombre del workflow que aparecerá en la pestaña "Actions" de GitHub
+name: Deploy AWS Lambda
+
+
+# Define cuándo se ejecutará automáticamente este pipeline
+on:
+
+  # El pipeline se dispara cuando ocurre un evento push
+  push:
+
+    # Solo se ejecutará cuando el código llegue a la rama principal
+    branches:
+      - main
+
+
+
+# Aquí comienzan los trabajos (jobs) que ejecutará GitHub Actions
+jobs:
+
+
+  # Nombre del trabajo actual
+  # En este caso tenemos un único trabajo llamado "deploy"
+  deploy:
+
+
+    # Máquina virtual donde se ejecutará el pipeline
+    # GitHub nos proporciona un servidor temporal con Ubuntu
+    runs-on: ubuntu-latest
+
+
+
+    # Lista de pasos que se ejecutarán en orden
+    steps:
+
+
+      # =====================================================
+      # PASO 1: Descargar el código del repositorio
+      # =====================================================
+
+      # Este paso clona nuestro repositorio dentro de la máquina
+      # temporal de GitHub Actions.
+      #
+      # Sin este paso, el servidor de GitHub no tendría nuestro código.
+      - name: Checkout code
+
+        # Acción oficial de GitHub para descargar el repositorio
+        uses: actions/checkout@v4
+
+
+
+
+      # =====================================================
+      # PASO 2: Instalar el entorno .NET
+      # =====================================================
+
+      # Configura el SDK de .NET necesario para compilar nuestra Lambda.
+      #
+      # Como nuestra Lambda está desarrollada en C#,
+      # necesitamos tener instalado .NET en el servidor.
+      - name: Setup .NET
+
+        # Acción oficial para instalar diferentes versiones de .NET
+        uses: actions/setup-dotnet@v4
+
+        with:
+
+          # Versión del SDK que utilizaremos
+          # Debe coincidir con la versión usada en el proyecto.
+          dotnet-version: '10.0.x'
+
+
+
+
+      # =====================================================
+      # PASO 3: Restaurar paquetes NuGet
+      # =====================================================
+
+      # Descarga todas las dependencias necesarias del proyecto.
+      #
+      # Ejemplo:
+      # - AWS Lambda SDK
+      # - Librerías externas
+      # - Paquetes NuGet
+      #
+      # Es equivalente a preparar todas las herramientas
+      # necesarias antes de compilar.
+      - name: Restore packages
+
+        run: dotnet restore
+
+
+
+
+      # =====================================================
+      # PASO 4: Compilar la aplicación
+      # =====================================================
+
+      # Compila el proyecto para verificar que no existan errores.
+      #
+      # Si el código tiene errores:
+      # el pipeline se detiene y Lambda NO se actualiza.
+      #
+      # Esto representa la parte de CI
+      # (Continuous Integration).
+      - name: Build
+
+        run: dotnet build --configuration Release
+
+
+
+
+      # =====================================================
+      # PASO 5: Instalar herramientas AWS Lambda para .NET
+      # =====================================================
+
+      # Instala la herramienta de línea de comandos de AWS Lambda.
+      #
+      # Esta herramienta permite ejecutar comandos como:
+      #
+      # dotnet lambda deploy-function
+      #
+      # que será utilizado en el siguiente paso.
+      - name: Install Lambda Tools
+
+        run: dotnet tool install -g Amazon.Lambda.Tools
+
+
+
+
+      # =====================================================
+      # PASO 6: Desplegar la Lambda en AWS
+      # =====================================================
+
+      # Ejecuta el despliegue automático hacia AWS Lambda.
+      #
+      # Aquí ocurre la parte de CD:
+      #
+      # Código nuevo
+      #       |
+      #       v
+      # GitHub Actions
+      #       |
+      #       v
+      # AWS Lambda actualizada
+      #
+      - name: Deploy Lambda
+
+        # Nombre de la función Lambda que será actualizada
+        run: dotnet lambda deploy-function cicd
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
